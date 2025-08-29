@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "spring-crud-livros-collection",
+		"name": "Spring CRUD - Livros API",
+		"description": "Collection para testar a API CRUD de Livros desenvolvida em Spring Boot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE - Adicionar Livro",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"titulo\": \"Dom Casmurro\",\n    \"autor\": \"Machado de Assis\",\n    \"ano\": 1899,\n    \"genero\": \"Romance\",\n    \"editora\": \"Garnier\",\n    \"numeroPaginas\": 256\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/livros",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"livros"
+					]
+				},
+				"description": "Adiciona um novo livro à lista"
+			}
+		},
+		{
+			"name": "READ - Listar Todos os Livros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/livros",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"livros"
+					]
+				},
+				"description": "Retorna todos os livros cadastrados"
+			}
+		},
+		{
+			"name": "READ - Buscar Livro por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/livros/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"livros",
+						"1"
+					]
+				},
+				"description": "Busca um livro específico pelo ID"
+			}
+		},
+		{
+			"name": "READ - Buscar Livro por Nome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/livros/busca?nome=Dom",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"livros",
+						"busca"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "Dom",
+							"description": "Parte do título do livro para busca"
+						}
+					]
+				},
+				"description": "Busca livros que contenham o texto especificado no título"
+			}
+		},
+		{
+			"name": "UPDATE - Atualizar Livro",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"titulo\": \"Dom Casmurro - Edição Revisada\",\n    \"autor\": \"Machado de Assis\",\n    \"ano\": 1899,\n    \"genero\": \"Romance Clássico\",\n    \"editora\": \"Garnier\",\n    \"numeroPaginas\": 280\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/livros/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"livros",
+						"1"
+					]
+				},
+				"description": "Atualiza um livro existente pelo ID"
+			}
+		},
+		{
+			"name": "DELETE - Remover Livro",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/livros/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"livros",
+						"1"
+					]
+				},
+				"description": "Remove um livro pelo ID"
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8082",
+			"type": "string"
+		}
+	]
+}
